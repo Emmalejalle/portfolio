@@ -30,7 +30,10 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden items-center gap-3 md:flex">
+          <Button href="/cv.pdf" variant="outline" className="!px-5 !py-2.5" target="_blank">
+            Mon CV
+          </Button>
           <Button href="/#contact" variant="outline" className="!px-5 !py-2.5">
             Me contacter
           </Button>
