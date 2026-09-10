@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Project } from "@/lib/data";
 import { Badge } from "./Badge";
 import { ProjectVisual } from "./ProjectVisual";
@@ -42,13 +43,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="flex gap-4 pt-1">
         {project.links.map((link) => (
-          <a
+          <Link
             key={link.label}
             href={link.href}
             className="text-sm font-medium text-foreground underline decoration-accent-strong/40 decoration-2 underline-offset-4 transition-colors hover:text-accent-strong"
           >
             {link.label} →
-          </a>
+          </Link>
         ))}
       </div>
     </article>

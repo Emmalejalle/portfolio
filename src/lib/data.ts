@@ -30,6 +30,7 @@ export type Project = {
   highlights: string[];
   tags: string[];
   links: { label: string; href: string }[];
+  liveUrl?: string;
 };
 
 export const projects: Project[] = [
@@ -46,7 +47,7 @@ export const projects: Project[] = [
       "Répartition des rôles et gestion de projet en équipe",
     ],
     tags: ["React Native", "Expo", "FastAPI", "MySQL", "Travail d'équipe"],
-    links: [{ label: "Voir le projet", href: "#" }],
+    links: [{ label: "Voir le projet", href: "/projets/fenalim" }],
   },
   {
     slug: "vente-garage",
@@ -54,14 +55,15 @@ export const projects: Project[] = [
     role: "Site one-page — projet réalisé en solo pendant mon stage chez Selltim",
     team: "solo",
     description:
-      "Site vitrine one-page conçu et développé seule, de la maquette Figma jusqu'au code final. L'objectif : traduire fidèlement une identité visuelle existante en une interface web propre, responsive et performante.",
+      "Site vitrine one-page développé seule à partir d'une maquette Figma réalisée par l'équipe design de Selltim. L'objectif : intégrer fidèlement cette maquette en une interface web propre, responsive et performante.",
     highlights: [
-      "Intégration pixel-perfect à partir d'une maquette Figma",
-      "Développement complet en autonomie, du design system au déploiement",
+      "Intégration pixel-perfect à partir d'une maquette Figma fournie par l'équipe design",
+      "Développement complet en autonomie, de l'intégration au déploiement",
       "Structure one-page pensée pour la conversion et la lisibilité",
     ],
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Figma to code", "Projet solo"],
-    links: [{ label: "Voir le projet", href: "#" }],
+    links: [{ label: "Voir le projet", href: "/projets/vente-garage" }],
+    liveUrl: "https://www.vente-garage.fr/",
   },
 ];
 
