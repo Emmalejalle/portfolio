@@ -16,10 +16,10 @@ export function About() {
             peuvent être mises à l&apos;épreuve — les deux se nourrissent l&apos;une l&apos;autre.
           </p>
           <p className="text-base leading-relaxed text-foreground-muted">
-            En parallèle de ma formation, je suis actuellement en stage de développement web chez{" "}
+            J&apos;ai réalisé un stage de développement web chez{" "}
             <span className="font-medium text-foreground">Selltim</span>, une agence web basée à
-            Lanester, où je travaille au quotidien avec Next.js, GraphQL et Tailwind CSS sur des
-            projets clients.
+            Lanester, où j&apos;ai travaillé au quotidien avec Next.js, GraphQL et Tailwind CSS
+            sur des projets clients.
           </p>
         </div>
 
