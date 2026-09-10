@@ -19,8 +19,9 @@ export function Hero() {
           </h1>
 
           <p className="max-w-lg text-base leading-relaxed text-foreground-muted sm:text-lg">
-            {profile.tagline} Actuellement en stage développement web chez Selltim, agence web à
-            Lanester, sur Next.js, GraphQL et Tailwind CSS.
+            {profile.tagline} J&apos;ai récemment effectué un stage de développement web chez
+            Selltim, agence web à Lanester, où j&apos;ai travaillé avec Next.js, GraphQL et
+            Tailwind CSS.
           </p>
 
           <div className="flex flex-wrap gap-4 pt-2">
@@ -31,7 +32,7 @@ export function Hero() {
           </div>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-6 text-sm text-foreground-muted">
-            <span className="font-medium text-foreground">Stack actuelle</span>
+            <span className="font-medium text-foreground">Ma stack</span>
             <span>Next.js</span>
             <span aria-hidden className="h-1 w-1 rounded-full bg-border" />
             <span>GraphQL</span>
@@ -41,32 +42,22 @@ export function Hero() {
         </div>
 
         <div className="relative mx-auto w-full max-w-sm">
-          <div className="relative aspect-[4/5] w-full rounded-[2.5rem] border border-border bg-surface p-8 shadow-xl shadow-foreground/5">
-            <div className="absolute inset-8 rounded-3xl bg-accent-soft" />
-            <div className="relative flex h-full flex-col justify-between">
-              <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-accent-strong" />
-                <span className="h-2.5 w-2.5 rounded-full bg-accent" />
-                <span className="h-2.5 w-2.5 rounded-full bg-border" />
-              </div>
-
-              <div className="flex flex-col gap-2 font-mono text-xs text-accent-strong/80">
-                <span>const dev = {"{"}</span>
-                <span className="pl-4">focus: &quot;web&quot;,</span>
-                <span className="pl-4">mindset: &quot;sécurité&quot;,</span>
-                <span>{"}"}</span>
-              </div>
+          {/* Emplacement photo — remplacer par une vraie photo (ex: <Image src="/photo.jpg" fill className="object-cover" />) dès qu'elle est disponible */}
+          <div className="relative flex aspect-[4/5] w-full flex-col items-center justify-center gap-4 overflow-hidden rounded-[2.5rem] border border-border bg-gradient-to-b from-accent-soft to-surface shadow-xl shadow-foreground/5">
+            <div className="flex h-28 w-28 items-center justify-center rounded-full bg-accent-strong">
+              <span className="font-accent text-5xl italic text-white">EL</span>
             </div>
+            <span className="text-xs font-medium text-foreground-muted">Photo à venir</span>
           </div>
 
-          <div className="absolute -left-6 top-10 flex flex-col gap-0.5 rounded-2xl border border-border bg-surface px-4 py-3 text-xs shadow-lg shadow-foreground/5">
+          <div className="absolute -top-6 -right-6 flex flex-col gap-0.5 rounded-2xl border border-border bg-surface px-4 py-3 text-xs shadow-lg shadow-foreground/5">
             <span className="font-semibold text-foreground">IUT de Vannes</span>
             <span className="text-foreground-muted">BUT Informatique · Cybersécurité</span>
           </div>
 
-          <div className="absolute -bottom-6 -right-4 flex flex-col gap-0.5 rounded-2xl border border-border bg-surface px-4 py-3 text-xs shadow-lg shadow-foreground/5">
-            <span className="font-semibold text-foreground">En stage</span>
-            <span className="text-foreground-muted">Selltim · Lanester</span>
+          <div className="absolute -bottom-6 -left-6 flex flex-col gap-0.5 rounded-2xl border border-border bg-surface px-4 py-3 text-xs shadow-lg shadow-foreground/5">
+            <span className="font-semibold text-foreground">25 janv. – 14 mai 2027</span>
+            <span className="text-foreground-muted">Recherche de stage</span>
           </div>
         </div>
       </div>
