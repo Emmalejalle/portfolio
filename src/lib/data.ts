@@ -9,10 +9,10 @@ export const profile = {
 };
 
 export const navLinks = [
-  { href: "#projets", label: "Projets" },
-  { href: "#competences", label: "Compétences" },
-  { href: "#a-propos", label: "À propos" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#projets", label: "Projets" },
+  { href: "/#competences", label: "Compétences" },
+  { href: "/#a-propos", label: "À propos" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export const socials = [
