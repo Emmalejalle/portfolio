@@ -1,10 +1,11 @@
 export const profile = {
-  name: "Emma Lejalle",
+  name: "Emma Le Jallé",
   role: "Étudiante en Cybersécurité & Développeuse Web",
   location: "Vannes, France",
   email: "emmalejalle4@gmail.com",
   tagline:
     "J'aime construire des interfaces soignées, sans jamais perdre de vue la manière dont elles peuvent être attaquées.",
+  internshipSearch: "Recherche de stage du 25 janvier au 14 mai 2027",
 };
 
 export const navLinks = [
@@ -38,19 +39,19 @@ export const projects: Project[] = [
     role: "Application mobile — projet d'équipe, 2ᵉ année BUT",
     team: "équipe",
     description:
-      "Application mobile pensée pour accompagner les sapeurs-pompiers dans le suivi de leurs interventions et de leurs échanges d'informations sur le terrain. Développée en équipe de plusieurs étudiants dans le cadre du BUT Informatique.",
+      "Application mobile de recensement des points d'eau à destination des sapeurs-pompiers, développée en équipe dans le cadre d'une SAE du BUT Informatique.",
     highlights: [
-      "Conception collaborative du cahier des charges avec un client réel",
+      "Application mobile développée avec React Native et Expo",
+      "API réalisée en FastAPI, données persistées en MySQL",
       "Répartition des rôles et gestion de projet en équipe",
-      "Interface pensée pour une utilisation rapide, en conditions d'urgence",
     ],
-    tags: ["Développement mobile", "Travail d'équipe", "Gestion de projet"],
+    tags: ["React Native", "Expo", "FastAPI", "MySQL", "Travail d'équipe"],
     links: [{ label: "Voir le projet", href: "#" }],
   },
   {
     slug: "vente-garage",
     title: "Vente-Garage",
-    role: "Site one-page — projet réalisé en solo",
+    role: "Site one-page — projet réalisé en solo pendant mon stage chez Selltim",
     team: "solo",
     description:
       "Site vitrine one-page conçu et développé seule, de la maquette Figma jusqu'au code final. L'objectif : traduire fidèlement une identité visuelle existante en une interface web propre, responsive et performante.",
@@ -59,7 +60,7 @@ export const projects: Project[] = [
       "Développement complet en autonomie, du design system au déploiement",
       "Structure one-page pensée pour la conversion et la lisibilité",
     ],
-    tags: ["Next.js", "Tailwind CSS", "Figma to code", "Projet solo"],
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Figma to code", "Projet solo"],
     links: [{ label: "Voir le projet", href: "#" }],
   },
 ];
@@ -72,15 +73,15 @@ export type SkillCategory = {
 export const skillCategories: SkillCategory[] = [
   {
     label: "Développement web",
-    skills: ["Next.js", "React", "TypeScript / JavaScript", "GraphQL", "Tailwind CSS"],
+    skills: ["Next.js", "React / React Native", "TypeScript / JavaScript", "GraphQL", "Tailwind CSS", "HTML / CSS"],
   },
   {
-    label: "Cybersécurité",
-    skills: ["Sécurité applicative", "Réseaux", "Administration Linux", "Analyse de vulnérabilités"],
+    label: "Langages & bases de données",
+    skills: ["Java", "Python", "SQL", "MySQL", "Oracle"],
   },
   {
-    label: "Outils & méthodes",
-    skills: ["Git / GitHub", "Figma", "SQL", "Travail en équipe agile"],
+    label: "Cybersécurité & outils",
+    skills: ["Réseaux", "Linux", "Windows", "Git", "Figma"],
   },
 ];
 
@@ -93,20 +94,20 @@ export type TimelineItem = {
 export const timeline: TimelineItem[] = [
   {
     period: "2023 — 2024",
-    title: "BUT Informatique, 1ʳᵉ année",
+    title: "Prépa MPSI",
     description:
-      "Entrée à l'IUT de Vannes, parcours Cybersécurité. Fondamentaux du développement, des réseaux et des bases de données.",
+      "Année préparatoire maths/physique au lycée Lesage, à Vannes, avant réorientation vers l'informatique.",
   },
   {
-    period: "2024 — 2025",
-    title: "BUT Informatique, 2ᵉ année",
+    period: "2024 — 2027",
+    title: "BUT Informatique, parcours Cybersécurité",
     description:
-      "Approfondissement de la cybersécurité et du développement. Projet d'équipe FenAlim, application mobile pour sapeurs-pompiers.",
+      "IUT de Vannes. Développement, réseaux, bases de données et sécurité. Projet d'équipe FenAlim, application mobile pour sapeurs-pompiers.",
   },
   {
-    period: "2025 — en cours",
+    period: "2026",
     title: "Stage développement web — Selltim",
     description:
-      "Stage chez Selltim, agence web à Lanester, sur des projets clients en Next.js, GraphQL et Tailwind CSS.",
+      "Stage chez Selltim, agence web à Lanester : développement de projets clients en Next.js, GraphQL et Tailwind CSS, dont le site Vente-Garage.",
   },
 ];

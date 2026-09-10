@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { navLinks } from "@/lib/data";
+import { navLinks, profile } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
 
 export function Header() {
@@ -14,7 +14,7 @@ export function Header() {
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-strong font-accent text-base italic text-white">
             E
           </span>
-          Emma Lejalle
+          {profile.name}
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
