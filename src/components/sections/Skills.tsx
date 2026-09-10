@@ -9,7 +9,7 @@ export function Skills() {
         <SectionHeading
           eyebrow="Compétences"
           title="Stack technique & compétences"
-          description="Une double formation développement web et cybersécurité, avec une pratique quotidienne du Next.js en stage."
+          description="Une double formation développement web et cybersécurité, avec une pratique de Next.js consolidée lors de mon stage chez Selltim."
         />
 
         <div className="mt-12 grid gap-6 sm:grid-cols-3">
