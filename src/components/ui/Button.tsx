@@ -6,6 +6,7 @@ type ButtonProps = {
   href?: string;
   variant?: "primary" | "outline";
   className?: string;
+  target?: string;
 };
 
 const base =
@@ -17,12 +18,17 @@ const variants = {
     "border border-foreground/15 text-foreground hover:border-accent-strong hover:text-accent-strong",
 };
 
-export function Button({ children, href, variant = "primary", className = "" }: ButtonProps) {
+export function Button({ children, href, variant = "primary", className = "", target }: ButtonProps) {
   const classes = `${base} ${variants[variant]} ${className}`;
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link
+        href={href}
+        className={classes}
+        target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      >
         {children}
       </Link>
     );

@@ -29,6 +29,9 @@ export function Hero() {
             <Button href="#contact" variant="outline">
               Me contacter
             </Button>
+            <Button href="/cv.pdf" variant="outline" target="_blank">
+              Voir mon CV
+            </Button>
           </div>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-6 text-sm text-foreground-muted">
