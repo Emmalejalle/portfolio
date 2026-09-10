@@ -14,8 +14,8 @@ export function Contact() {
               Discutons de votre prochain projet
             </h2>
             <p className="text-base leading-relaxed text-foreground-muted">
-              Étudiante, en stage, ou en recherche d&apos;alternance — je suis ouverte aux
-              échanges autour du développement web et de la cybersécurité.
+              {profile.internshipSearch} — je suis ouverte aux échanges autour du développement
+              web et de la cybersécurité.
             </p>
           </div>
 
