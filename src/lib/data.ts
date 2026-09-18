@@ -17,8 +17,8 @@ export const navLinks = [
 
 export const socials = [
   { label: "Email", href: `mailto:${profile.email}` },
-  { label: "GitHub", href: "#" },
-  { label: "LinkedIn", href: "#" },
+  { label: "GitHub", href: "https://github.com/Emmalejalle" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/emma-le-jall%C3%A9-228283349/" },
 ];
 
 export type Project = {
