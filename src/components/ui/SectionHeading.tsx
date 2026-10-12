@@ -1,4 +1,5 @@
 type SectionHeadingProps = {
+  index?: string;
   eyebrow: string;
   title: string;
   description?: string;
@@ -6,6 +7,7 @@ type SectionHeadingProps = {
 };
 
 export function SectionHeading({
+  index,
   eyebrow,
   title,
   description,
@@ -15,14 +17,15 @@ export function SectionHeading({
 
   return (
     <div className={`flex max-w-2xl flex-col gap-3 ${alignment}`}>
-      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent-strong">
+      <span className="type-eyebrow flex items-baseline gap-2">
+        {index ? <span className="text-foreground-muted">{index} /</span> : null}
         {eyebrow}
       </span>
-      <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+      <h2 className="type-title">
         {title}
       </h2>
       {description ? (
-        <p className="text-base leading-relaxed text-foreground-muted">{description}</p>
+        <p className="type-body">{description}</p>
       ) : null}
     </div>
   );

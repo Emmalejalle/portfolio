@@ -1,8 +1,7 @@
 # Portfolio — Emma Le Jallé
 
 Site portfolio d'Emma Le Jallé, étudiante en BUT Informatique parcours Cybersécurité à l'IUT de
-Vannes. Le site présente son parcours, ses projets et sa stack technique, dans le cadre d'une
-recherche de stage (25 janvier — 14 mai 2027).
+Vannes. Le site présente son parcours, ses projets et sa stack technique.
 
 Site one-page avec des pages de détail par projet.
 
@@ -13,7 +12,7 @@ Site one-page avec des pages de détail par projet.
 | Framework | Next.js 16 (App Router, React Server Components) |
 | Langage | TypeScript |
 | Styles | Tailwind CSS v4 (configuration via `@theme` dans le CSS, pas de `tailwind.config`) |
-| Polices | Geist et Geist Mono pour le texte, Instrument Serif pour les accents — chargées via `next/font/google` |
+| Polices | Geist pour le texte, Geist Mono pour les données et étiquettes — chargées via `next/font/google` |
 | Lint | ESLint 9 (flat config) avec `eslint-config-next` |
 
 ## Démarrage
@@ -66,7 +65,7 @@ plupart des cas :
 
 | Export | Contenu |
 |---|---|
-| `profile` | Nom, rôle, email, accroche, période de recherche de stage |
+| `profile` | Nom, rôle, email, accroche, formation, numéro du badge |
 | `navLinks` | Liens du menu de navigation |
 | `socials` | Liens Email, GitHub et LinkedIn du pied de page |
 | `projects` | Les projets — chaque entrée génère sa carte et sa page `/projets/<slug>` |
@@ -80,9 +79,16 @@ d'accueil et la page de détail sont créées automatiquement à partir du `slug
 
 ## Design
 
-Les couleurs sont définies comme variables CSS dans `src/app/globals.css`, puis exposées à
-Tailwind via `@theme inline`. Elles s'utilisent donc comme des classes normales
-(`bg-surface`, `text-accent-strong`, `border-border`…).
+La charte est définie dans `src/app/globals.css` (seule source de vérité) et visible en vrai sur
+**`/charte`** (page non indexée, absente de la navigation).
+
+Deux thèmes : **sombre par défaut** (`[data-theme="dark"]`) et clair (`:root`). Le bouton du header
+bascule et mémorise le choix dans `localStorage` ; un script inline dans `layout.tsx` l'applique avant
+l'affichage pour éviter un flash. Variante Tailwind : `dark:`.
+
+### Couleurs
+
+Variables CSS exposées à Tailwind via `@theme inline` : `bg-surface`, `text-accent-ink`, `border-border`…
 
 | Variable | Rôle |
 |---|---|
@@ -90,12 +96,51 @@ Tailwind via `@theme inline`. Elles s'utilisent donc comme des classes normales
 | `--surface` | Fond des sections alternées et des cartes, blanc |
 | `--border` | Bordures et filets |
 | `--foreground` / `--foreground-muted` | Texte principal / secondaire |
-| `--accent` / `--accent-strong` / `--accent-soft` | Rose de la charte, du plus clair au plus soutenu |
+| `--accent-soft` | Fond rose pâle : badges, visuels, blocs |
+| `--accent` | Halos et ombres colorées |
+| `--accent-strong` | Rose décoratif : points, anneaux (**jamais pour du texte**, contraste 3:1) |
+| `--accent-ink` | Rose lisible : texte rose, liens, bouton principal (contraste ≥ 4,5:1) |
+| `--accent-foreground` | Texte posé sur un fond rose plein |
 
-Deux conventions à respecter pour rester cohérent avec l'existant :
+### Typographie
+
+Utilitaires `type-*` à utiliser plutôt que de recombiner taille, graisse et couleur :
+
+| Classe | Usage |
+|---|---|
+| `type-display` | Titre du hero |
+| `type-title` | Titre de section ou de page |
+| `type-subtitle` | Titre de carte, d'étape, de sous-partie |
+| `type-eyebrow` | Sur-titre en capitales roses, en Geist Mono |
+| `type-lead` / `type-body` / `type-small` | Chapeau / paragraphe / texte de carte |
+| `link-underline` | Lien souligné rose |
+
+Geist pour le texte, Geist Mono (`font-mono`) pour ce qui ressemble à une donnée : dates,
+identifiants, étiquettes. Pas d'italique décoratif.
+
+### Signature visuelle
+
+`Fingerprint` génère un motif « 10 PRINT » à partir d'un texte haché (`src/lib/fingerprint.ts`) :
+même texte, même motif. Il sert au logo du header, au badge d'accès du hero (`AccessBadge`, à la
+place d'une photo) et aux visuels de projets sans capture.
+
+### Structure
+
+- Cadre de page : deux filets verticaux aux bords du conteneur (`layout.tsx`).
+- `Section` (`src/components/layout/Section.tsx`) : filet en haut et coins de viseur roses aux angles.
+- Sections numérotées via `SectionHeading index="01"`.
+- Logo : `src/components/ui/Logo.tsx` (empreinte en attendant le vrai logo).
+
+### Formes
+
+- Arrondis : `rounded-full` (boutons, badges), `rounded-media` (images, encarts), `rounded-card` (cartes), `rounded-panel` (grands blocs).
+- Ombres : `shadow-card`, `shadow-card-hover`, `shadow-float`, `shadow-raised`.
+
+### Conventions
 
 - les sections alternent entre `bg-background` et `bg-surface` pour rythmer la page ;
-- l'accent rose s'utilise en touche (points, liens, libellés) plutôt qu'en aplat.
+- l'accent rose s'utilise en touche (points, liens, libellés) plutôt qu'en aplat ;
+- pas de couleur, d'arrondi ou d'ombre en dur (`text-white`, `rounded-[…]`, `shadow-lg`) : passer par les tokens.
 
 ## Déploiement
 

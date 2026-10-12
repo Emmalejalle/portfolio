@@ -5,7 +5,7 @@ type BadgeProps = {
 
 export function Badge({ children, tone = "soft" }: BadgeProps) {
   const tones = {
-    soft: "bg-accent-soft text-accent-strong",
+    soft: "bg-accent-soft text-accent-ink",
     outline: "border border-border text-foreground-muted",
   };
 

@@ -1,21 +1,23 @@
+import { Section } from "@/components/layout/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import { projects } from "@/lib/data";
+import { projects } from "@/data/projects";
 
 export function Projects() {
   return (
-    <section id="projets" className="mx-auto max-w-6xl px-6 py-20 sm:py-28">
+    <Section id="projets">
       <SectionHeading
+        index="01"
         eyebrow="Projets"
-        title="Deux projets, deux façons de travailler"
-        description="Du travail en équipe sur un vrai besoin métier à l'intégration solo d'une maquette Figma jusqu'au code."
+        title="Stages, projets d'équipe et projets universitaires"
+        description="Des missions clients en agence à des projets menés en équipe ou en solo dans le cadre de mes études."
       />
 
-      <div className="mt-12 grid gap-6 sm:grid-cols-2">
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />
         ))}
       </div>
-    </section>
+    </Section>
   );
 }

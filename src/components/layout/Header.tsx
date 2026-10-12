@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { navLinks, profile } from "@/lib/data";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "@/components/ui/Logo";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -12,9 +14,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-strong font-accent text-base italic text-white">
-            E
-          </span>
+          <Logo />
           {profile.name}
         </Link>
 
@@ -31,34 +31,38 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <Button href="/cv.pdf" variant="outline" className="!px-5 !py-2.5" target="_blank">
+          <ThemeToggle />
+          <Button href="/cv.pdf" variant="outline" size="sm" target="_blank">
             Mon CV
           </Button>
-          <Button href="/#contact" variant="outline" className="!px-5 !py-2.5">
+          <Button href="/#contact" variant="outline" size="sm">
             Me contacter
           </Button>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground md:hidden"
-          aria-label="Ouvrir le menu"
-          aria-expanded={open}
-        >
-          <span className="relative block h-3 w-4">
-            <span
-              className={`absolute left-0 top-0 h-[1.5px] w-4 bg-current transition-transform ${
-                open ? "translate-y-[5px] rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`absolute left-0 bottom-0 h-[1.5px] w-4 bg-current transition-transform ${
-                open ? "-translate-y-[5px] -rotate-45" : ""
-              }`}
-            />
-          </span>
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground md:hidden"
+            aria-label="Ouvrir le menu"
+            aria-expanded={open}
+          >
+            <span className="relative block h-3 w-4">
+              <span
+                className={`absolute left-0 top-0 h-[1.5px] w-4 bg-current transition-transform ${
+                  open ? "translate-y-[5px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`absolute left-0 bottom-0 h-[1.5px] w-4 bg-current transition-transform ${
+                  open ? "-translate-y-[5px] -rotate-45" : ""
+                }`}
+              />
+            </span>
+          </button>
+        </div>
       </div>
 
       {open ? (
@@ -68,7 +72,7 @@ export function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="rounded-lg px-2 py-2.5 text-sm font-medium text-foreground-muted transition-colors hover:bg-accent-soft hover:text-foreground"
+              className="rounded-media px-3 py-2.5 text-sm font-medium text-foreground-muted transition-colors hover:bg-accent-soft hover:text-foreground"
             >
               {link.label}
             </Link>
