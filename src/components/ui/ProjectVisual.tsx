@@ -1,8 +1,11 @@
+import { Fingerprint } from "./Fingerprint";
+
 type ProjectVisualProps = {
   label: string;
+  className?: string;
 };
 
-export function ProjectVisual({ label }: ProjectVisualProps) {
+export function ProjectVisual({ label, className = "h-48" }: ProjectVisualProps) {
   const initials = label
     .split(/[\s-]/)
     .map((word) => word[0])
@@ -11,10 +14,11 @@ export function ProjectVisual({ label }: ProjectVisualProps) {
     .toUpperCase();
 
   return (
-    <div className="relative flex h-48 w-full items-center justify-center overflow-hidden rounded-2xl bg-accent-soft">
-      <div className="absolute -right-8 -top-10 h-32 w-32 rounded-full bg-accent/30 blur-2xl" />
-      <div className="absolute -bottom-12 -left-6 h-28 w-28 rounded-full bg-accent-strong/15 blur-2xl" />
-      <span className="relative font-accent text-6xl italic text-accent-strong/70">
+    <div
+      className={`relative flex w-full items-center justify-center overflow-hidden rounded-media bg-accent-soft ${className}`}
+    >
+      <Fingerprint seed={label} cells={14} strokeWidth={0.12} className="absolute inset-0 h-full w-full text-accent" />
+      <span className="relative rounded-full border border-border bg-surface px-4 py-1.5 font-mono text-sm font-medium tracking-widest text-accent-ink">
         {initials}
       </span>
     </div>

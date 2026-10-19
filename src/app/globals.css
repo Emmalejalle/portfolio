@@ -1,14 +1,54 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * Charte graphique — source unique des tokens.
+ * Aperçu visuel : /charte. Règles d'usage : section Design du README.
+ * Thème clair sur :root, thème sombre (par défaut) sur [data-theme="dark"].
+ */
+
 :root {
+  color-scheme: light;
+
+  /* Fonds */
   --background: #faf7f5;
   --surface: #ffffff;
   --border: #ece5e2;
+
+  /* Texte */
   --foreground: #2b2730;
   --foreground-muted: #6b6470;
+
+  /* Rose de la charte */
   --accent: #e3aeb8;
-  --accent-strong: #c4778a;
+  --accent-strong: #c4778a; /* décoratif uniquement : points, halos, anneaux */
+  --accent-ink: #ac4a62; /* texte et fonds de bouton : contraste AA garanti */
   --accent-soft: #f6e9eb;
+  --accent-foreground: #ffffff; /* texte posé sur accent-ink / accent-strong */
+
+  --shadow-tint: #2b2730;
+  --shadow-alpha: 5%;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #110e12;
+  --surface: #18141a;
+  --border: #2c2630;
+
+  --foreground: #f5eef2;
+  --foreground-muted: #a69ca9;
+
+  --accent: #6b3449;
+  --accent-strong: #d9668a;
+  --accent-ink: #ff8fae;
+  --accent-soft: #2a1620;
+  --accent-foreground: #1c0d14;
+
+  --shadow-tint: #000000;
+  --shadow-alpha: 45%;
 }
 
 @theme inline {
@@ -19,12 +59,61 @@
   --color-foreground-muted: var(--foreground-muted);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
+  --color-accent-ink: var(--accent-ink);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-foreground: var(--accent-foreground);
 
   --font-sans: var(--font-geist-sans);
-  --font-accent: var(--font-instrument-serif);
+  --font-mono: var(--font-geist-mono);
+
+  /* Arrondis : pilule (rounded-full) pour boutons et badges, puis du plus petit au plus grand */
+  --radius-media: 1rem;
+  --radius-card: 1.5rem;
+  --radius-panel: 2.5rem;
+
+  /* Ombres : teinte et intensité dépendent du thème (--shadow-tint, --shadow-alpha) */
+  --shadow-card: 0 1px 2px 0 color-mix(in srgb, var(--shadow-tint) calc(var(--shadow-alpha) * 0.6), transparent);
+  --shadow-card-hover: 0 10px 15px -3px color-mix(in srgb, var(--accent) 10%, transparent),
+    0 4px 6px -4px color-mix(in srgb, var(--accent) 10%, transparent);
+  --shadow-float: 0 10px 15px -3px color-mix(in srgb, var(--shadow-tint) var(--shadow-alpha), transparent),
+    0 4px 6px -4px color-mix(in srgb, var(--shadow-tint) var(--shadow-alpha), transparent);
+  --shadow-raised: 0 20px 25px -5px color-mix(in srgb, var(--shadow-tint) var(--shadow-alpha), transparent),
+    0 8px 10px -6px color-mix(in srgb, var(--shadow-tint) var(--shadow-alpha), transparent);
 
   --animate-fade-up: fade-up 0.6s ease-out both;
+  --animate-swing: swing 2.4s ease-out both, sway 6s ease-in-out 2.4s infinite;
+
+  /* Badge : grand balancement à l'arrivée, puis léger mouvement continu */
+  @keyframes swing {
+    0% {
+      transform: rotate(9deg);
+    }
+    25% {
+      transform: rotate(-6deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+    75% {
+      transform: rotate(-1.2deg);
+    }
+    100% {
+      transform: rotate(0);
+    }
+  }
+
+  @keyframes sway {
+    0%,
+    100% {
+      transform: rotate(0);
+    }
+    25% {
+      transform: rotate(1.6deg);
+    }
+    75% {
+      transform: rotate(-1.6deg);
+    }
+  }
 
   @keyframes fade-up {
     from {
@@ -38,6 +127,89 @@
   }
 }
 
+/* Échelle typographique */
+
+@utility type-display {
+  font-size: var(--text-4xl);
+  line-height: 1.1;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--foreground);
+
+  @variant sm {
+    font-size: var(--text-5xl);
+  }
+  @variant lg {
+    font-size: var(--text-6xl);
+  }
+}
+
+@utility type-title {
+  font-size: var(--text-3xl);
+  line-height: 1.2;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--foreground);
+
+  @variant sm {
+    font-size: var(--text-4xl);
+  }
+}
+
+@utility type-subtitle {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg--line-height);
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+@utility type-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: var(--text-xs--line-height);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent-ink);
+}
+
+@utility type-lead {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground-muted);
+
+  @variant sm {
+    font-size: var(--text-lg);
+  }
+}
+
+@utility type-body {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground-muted);
+}
+
+@utility type-small {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--foreground-muted);
+}
+
+/* Lien souligné rose, utilisé dans le texte et en pied de carte */
+@utility link-underline {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent-ink) 40%, transparent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color 150ms;
+
+  &:hover {
+    color: var(--accent-ink);
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -46,4 +218,14 @@ body {
 
 html {
   scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent-ink);
 }

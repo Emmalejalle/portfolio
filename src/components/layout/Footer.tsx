@@ -16,7 +16,7 @@ export function Footer() {
             <a
               key={social.label}
               href={social.href}
-              className="text-sm font-medium text-foreground-muted transition-colors hover:text-accent-strong"
+              className="text-sm font-medium text-foreground-muted transition-colors hover:text-accent-ink"
             >
               {social.label}
             </a>
@@ -26,7 +26,7 @@ export function Footer() {
 
       <div className="px-6 pb-4 text-center text-xs text-foreground-muted">
         © {new Date().getFullYear()} {profile.name}. Tous droits réservés. ·{" "}
-        <a href="https://sz-dev.fr" className="hover:text-accent-strong">
+        <a href="https://sz-dev.fr" className="hover:text-accent-ink">
           SZ-Dev
         </a>
       </div>
